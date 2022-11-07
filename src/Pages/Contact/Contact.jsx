@@ -1,8 +1,19 @@
 import React from "react";
 import contactanim from "./contactanim.json";
 import Lottie from "lottie-react";
+import toast from "react-hot-toast";
 
 const Contact = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const userName = form.userName.value;
+    toast.success(
+      `Thanks ${userName} for reaching me will be chatting with you soon`
+    );
+    form.reset();
+  };
+
   return (
     <div className="flex justify-center items-center w-[80%] mx-auto">
       <div>
@@ -60,24 +71,31 @@ const Contact = () => {
                 </p>
               </div>
             </div>
+
+            {/* form section */}
             <form
+              onSubmit={handleSubmit}
               noValidate=""
               className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 ng-untouched ng-pristine ng-valid"
             >
               <label className="block">
                 <span className="mb-1">Full name</span>
                 <input
+                  name="userName"
                   type="text"
                   placeholder="Your Name"
                   className="block w-full rounded-md shadow-sm  outline-none"
+                  required
                 />
               </label>
               <label className="block">
                 <span className="mb-1">Email address</span>
                 <input
+                  name="email"
                   type="email"
                   placeholder="example@gmail.com"
                   className="block w-full rounded-md shadow-sm outline-none"
+                  required
                 />
               </label>
               <label className="block">
@@ -86,10 +104,11 @@ const Contact = () => {
                   placeholder="Your message here"
                   rows="3"
                   className="block w-full rounded-md outline-none"
+                  required
                 ></textarea>
               </label>
               <button
-                type="button"
+                type="submit"
                 className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
               >
                 Submit
