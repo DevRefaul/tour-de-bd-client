@@ -121,8 +121,8 @@ const SignUp = () => {
                 y2="40.615"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0" stop-color="#2aa4f4"></stop>
-                <stop offset="1" stop-color="#007ad9"></stop>
+                <stop offset="0" stopColor="#2aa4f4"></stop>
+                <stop offset="1" stopColor="#007ad9"></stop>
               </linearGradient>
               <path
                 fill="url(#Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1)"
@@ -151,8 +151,8 @@ const SignUp = () => {
                 y2="23.508"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0" stop-color="#4c4c4c"></stop>
-                <stop offset="1" stop-color="#343434"></stop>
+                <stop offset="0" stopColor="#4c4c4c"></stop>
+                <stop offset="1" stopColor="#343434"></stop>
               </linearGradient>
               <path
                 fill="url(#rL2wppHyxHVbobwndsT6Ca_AZOZNnY73haj_gr1)"
