@@ -1,18 +1,68 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthConext } from "../../Authentication/authContext";
 
 const SignUp = () => {
+  const {
+    handleCreateUser,
+    handleGoogleSingIn,
+    handleGithubSingIn,
+    handleFacebookSingIn,
+  } = useContext(AuthConext);
+
+  const handleSingUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    handleCreateUser(email, password)
+      .then((result) => {
+        toast.success("Register Successfull");
+      })
+      .catch((err) => toast.error(err.message));
+
+    form.reset();
+  };
+
+  // google sign up
+  const handleGoogleRegister = () => {
+    handleGoogleSingIn()
+      .then((result) =>
+        toast.success("Successfully Created Account with Google Account")
+      )
+      .catch((err) => toast.error(err.message));
+  };
+  // faceboook sign up
+  const handleFacebookRegister = () => {
+    handleFacebookSingIn()
+      .then((result) =>
+        toast.success("Successfully Created Account with Facebook Account")
+      )
+      .catch((err) => toast.error(err.message));
+  };
+  // github sign up
+  const handleGithubRegister = () => {
+    handleGithubSingIn()
+      .then((result) =>
+        toast.success("Successfully Created Account with Github Account")
+      )
+      .catch((err) => toast.error(err.message));
+  };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-white text-gray-700 border-2 border-teal-400">
         <h1 className="text-2xl font-bold text-center">Sign up</h1>
         <form
+          onSubmit={handleSingUp}
           noValidate=""
           action=""
           className="space-y-6 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-1 text-sm">
-            <label for="username" className="block text-gray-800">
+            <label htmlFor="username" className="block text-gray-800">
               User Name
             </label>
             <input
@@ -24,7 +74,7 @@ const SignUp = () => {
             />
           </div>
           <div className="space-y-1 text-sm">
-            <label for="username" className="block text-gray-800">
+            <label htmlFor="username" className="block text-gray-800">
               Email
             </label>
             <input
@@ -36,7 +86,7 @@ const SignUp = () => {
             />
           </div>
           <div className="space-y-1 text-sm">
-            <label for="username" className="block text-gray-800">
+            <label htmlFor="username" className="block text-gray-800">
               Photo URL
             </label>
             <input
@@ -48,7 +98,7 @@ const SignUp = () => {
             />
           </div>
           <div className="space-y-1 text-sm">
-            <label for="password" className="block text-gray-800">
+            <label htmlFor="password" className="block text-gray-800">
               Password
             </label>
             <input
@@ -75,7 +125,11 @@ const SignUp = () => {
         </div>
         <div className="flex justify-center space-x-4">
           {/* google login */}
-          <button aria-label="Log in with Google" className="p-3 rounded-sm">
+          <button
+            onClick={handleGoogleRegister}
+            aria-label="Log in with Google"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -104,7 +158,11 @@ const SignUp = () => {
           </button>
 
           {/* facebook login */}
-          <button aria-label="Log in with facebook" className="p-3 rounded-sm">
+          <button
+            onClick={handleFacebookRegister}
+            aria-label="Log in with facebook"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -134,7 +192,11 @@ const SignUp = () => {
               ></path>
             </svg>
           </button>
-          <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button
+            onClick={handleGithubRegister}
+            aria-label="Log in with GitHub"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"

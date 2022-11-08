@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import '@splidejs/react-splide/css';
+import Authentication from './Authentication/authContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Authentication>
+      <App />
+    </Authentication>
   </React.StrictMode>
 );
 
