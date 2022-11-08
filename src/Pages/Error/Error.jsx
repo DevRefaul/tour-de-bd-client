@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import { Link, useRouteError } from "react-router-dom";
 
 const Error = () => {
+  document.title = "Error-Tour DE Bangladesh";
   const errorInfo = useRouteError();
   const { status, statusText } = errorInfo;
   console.log(errorInfo);

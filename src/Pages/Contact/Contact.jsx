@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import toast from "react-hot-toast";
 
 const Contact = () => {
+  document.title = "Contact-Tour DE Bangladesh";
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;

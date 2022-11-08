@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from 'firebase/auth'
 import app from "../Firebase/firebase";
 
 const auth = getAuth(app)
@@ -33,10 +33,24 @@ const Authentication = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
+    // sign in with email and password
+    const handleLogIn = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    // password reset 
+    const handleResetPass = (email) => {
+        return sendPasswordResetEmail(auth, email)
+    }
+
+    // sign out
+    const handleSignOut = () => {
+        return signOut(auth)
+    }
 
 
     const contextValues = {
-        handleCreateUser, handleGoogleSingIn, handleFacebookSingIn, handleGithubSingIn
+        handleCreateUser, handleGoogleSingIn, handleFacebookSingIn, handleGithubSingIn, handleLogIn, handleSignOut, handleResetPass
     }
 
     return (

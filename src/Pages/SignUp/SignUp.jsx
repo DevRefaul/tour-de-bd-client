@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthConext } from "../../Authentication/authContext";
 
 const SignUp = () => {
+  document.title = "SignUp-Tour DE Bangladesh";
   const {
     handleCreateUser,
     handleGoogleSingIn,

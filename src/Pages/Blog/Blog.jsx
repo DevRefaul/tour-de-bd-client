@@ -1,6 +1,7 @@
 import React from "react";
 
 const Blog = () => {
+  document.title = "Blog-Tour DE Bangladesh";
   return (
     <div className="w-[80%] mx-auto my-8">
       <h2 className="text-3xl font-bold text-teal-400 text-center underline">

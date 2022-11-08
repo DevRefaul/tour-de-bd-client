@@ -1,12 +1,76 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthConext } from "../../Authentication/authContext";
 
 const Login = () => {
+  // useEffect(() => {
+  document.title = "Login-Tour DE Bangladesh";
+  // }, []);
+
+  const {
+    handleFacebookSingIn,
+    handleGithubSingIn,
+    handleGoogleSingIn,
+    handleLogIn,
+    handleResetPass,
+  } = useContext(AuthConext);
+
+  // user email state
+  const [email, setEmail] = useState("");
+
+  // google sign up
+  const handleGoogleLogIn = () => {
+    handleGoogleSingIn()
+      .then((result) => toast.success("Successfully Logged In"))
+      .catch((err) => toast.error(err.message));
+  };
+  // faceboook sign up
+  const handleFacebookLogIn = () => {
+    handleFacebookSingIn()
+      .then((result) => toast.success("Successfully Logged In"))
+      .catch((err) => toast.error(err.message));
+  };
+  // github sign up
+  const handleGithubLogIn = () => {
+    handleGithubSingIn()
+      .then((result) => toast.success("Successfully Logged In"))
+      .catch((err) => toast.error(err.message));
+  };
+
+  // login with email and pass
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    handleLogIn(email, password)
+      .then((result) => {
+        toast.success("Login Successfull");
+      })
+      .catch((err) => toast.error(err.message));
+
+    form.reset();
+  };
+
+  // password reset
+  const handleResetPassword = () => {
+    handleResetPass(email)
+      .then((result) =>
+        toast.success(
+          "Password reset email sent to your email. Do not forget to check spam folder."
+        )
+      )
+      .catch((err) => toast.error(err.message));
+  };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-white text-gray-700 border-2 border-teal-400">
         <h1 className="text-2xl font-bold text-center">Login</h1>
         <form
+          onSubmit={handleSignIn}
           noValidate=""
           action=""
           className="space-y-6 ng-untouched ng-pristine ng-valid"
@@ -16,6 +80,7 @@ const Login = () => {
               Email
             </label>
             <input
+              onBlur={(e) => setEmail(e.target.value)}
               type="email"
               name="email"
               id="email"
@@ -35,7 +100,9 @@ const Login = () => {
               className="w-full px-4 py-3 rounded-md border-gray-700 bg-white text-gray-800 focus:border-teal-400"
             />
             <div className="flex justify-end text-xs text-gray-800">
-              <Link rel="noopener noreferrer">Forgot Password?</Link>
+              <Link onClick={handleResetPassword} rel="noopener noreferrer">
+                Forgot Password?
+              </Link>
             </div>
           </div>
           <button className="block w-full text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
@@ -51,7 +118,11 @@ const Login = () => {
         </div>
         <div className="flex justify-center space-x-4">
           {/* google login */}
-          <button aria-label="Log in with Google" className="p-3 rounded-sm">
+          <button
+            onClick={handleGoogleLogIn}
+            aria-label="Log in with Google"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -80,7 +151,11 @@ const Login = () => {
           </button>
 
           {/* facebook login */}
-          <button aria-label="Log in with facebook" className="p-3 rounded-sm">
+          <button
+            onClick={handleFacebookLogIn}
+            aria-label="Log in with facebook"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -110,7 +185,11 @@ const Login = () => {
               ></path>
             </svg>
           </button>
-          <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button
+            onClick={handleGithubLogIn}
+            aria-label="Log in with GitHub"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"

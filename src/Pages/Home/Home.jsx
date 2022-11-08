@@ -7,6 +7,7 @@ import Sale from "../../Components/Sale/Sale";
 import Services from "../../Components/Services/Services";
 
 const Home = () => {
+  document.title = "Tour DE Bangladesh";
   return (
     <div>
       <Carousel />
