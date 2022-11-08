@@ -35,6 +35,14 @@ const routes = createBrowserRouter([
         element: <Contact />,
       },
       {
+        path: "/myreviews",
+        element: <Contact />,
+      },
+      {
+        path: "/addservices",
+        element: <Contact />,
+      },
+      {
         path: "/login",
         element: <Login />,
       },

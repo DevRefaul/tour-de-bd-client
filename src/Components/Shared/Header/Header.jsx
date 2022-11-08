@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../Assets/TourdebdLOGO.png";
+import { AuthConext } from "../../../Authentication/authContext";
 
 const Header = () => {
+  const { user, handleSignOut } = useContext(AuthConext);
+
+  // menus
   const menus = ["home", "services", "blog", "contact"];
+
+  // handle log out
+  const handleLogout = () => {
+    handleSignOut()
+      .then((result) => toast.success("Successfully Log Out"))
+      .catch((err) => toast.err(err.message));
+  };
 
   return (
     <>
@@ -17,14 +29,26 @@ const Header = () => {
             />
           </Link>
           <div className="flex md:order-2">
-            <Link to="/login">
-              <button
-                type="button"
-                className="hidden md:block text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-              >
-                Login
-              </button>
-            </Link>
+            {user ? (
+              <Link>
+                <button
+                  onClick={handleLogout}
+                  type="button"
+                  className="hidden md:block text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                >
+                  Logout
+                </button>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <button
+                  type="button"
+                  className="hidden md:block text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                >
+                  Login
+                </button>
+              </Link>
+            )}
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
@@ -64,6 +88,26 @@ const Header = () => {
                   </NavLink>
                 </li>
               ))}
+              {user ? (
+                <>
+                  <NavLink
+                    to={`/myreviews`}
+                    className="block py-2 pr-4 pl-3 capitalize text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                    aria-current="page"
+                  >
+                    My reviews
+                  </NavLink>
+                  <NavLink
+                    to={`/addservices`}
+                    className="block py-2 pr-4 pl-3 capitalize text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                    aria-current="page"
+                  >
+                    Add Services
+                  </NavLink>
+                </>
+              ) : (
+                ""
+              )}
             </ul>
           </div>
         </div>
