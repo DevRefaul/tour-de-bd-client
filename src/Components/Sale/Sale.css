@@ -1,0 +1,10 @@
+.imageWithGradient {
+    background-image:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
+        url('https://i.ibb.co/ryVsLBy/pexels-markus-spiske-129105-1.jpg');
+
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 20px;
+}
