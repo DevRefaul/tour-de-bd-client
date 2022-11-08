@@ -1,16 +1,28 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthConext } from "../../Authentication/authContext";
+import Loading from "../Loading/Loading";
 
 const SignUp = () => {
   document.title = "SignUp-Tour DE Bangladesh";
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.state?.from?.pathname || "/";
+
   const {
     handleCreateUser,
     handleGoogleSingIn,
     handleGithubSingIn,
     handleFacebookSingIn,
+    loading,
   } = useContext(AuthConext);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   const handleSingUp = (e) => {
     e.preventDefault();
@@ -21,6 +33,7 @@ const SignUp = () => {
     handleCreateUser(email, password)
       .then((result) => {
         toast.success("Register Successfull");
+        navigate(from, { replace: true });
       })
       .catch((err) => toast.error(err.message));
 
@@ -30,25 +43,28 @@ const SignUp = () => {
   // google sign up
   const handleGoogleRegister = () => {
     handleGoogleSingIn()
-      .then((result) =>
-        toast.success("Successfully Created Account with Google Account")
-      )
+      .then((result) => {
+        toast.success("Successfully Created Account with Google Account");
+        navigate(from, { replace: true });
+      })
       .catch((err) => toast.error(err.message));
   };
   // faceboook sign up
   const handleFacebookRegister = () => {
     handleFacebookSingIn()
-      .then((result) =>
-        toast.success("Successfully Created Account with Facebook Account")
-      )
+      .then((result) => {
+        toast.success("Successfully Created Account with Facebook Account");
+        navigate(from, { replace: true });
+      })
       .catch((err) => toast.error(err.message));
   };
   // github sign up
   const handleGithubRegister = () => {
     handleGithubSingIn()
-      .then((result) =>
-        toast.success("Successfully Created Account with Github Account")
-      )
+      .then((result) => {
+        toast.success("Successfully Created Account with Github Account");
+        navigate(from, { replace: true });
+      })
       .catch((err) => toast.error(err.message));
   };
 

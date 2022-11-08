@@ -1,12 +1,20 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthConext } from "../../Authentication/authContext";
+import Loading from "../Loading/Loading";
 
 const Login = () => {
   // useEffect(() => {
   document.title = "Login-Tour DE Bangladesh";
   // }, []);
+  // user email state
+  const [email, setEmail] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || "/";
+  console.log(from);
 
   const {
     handleFacebookSingIn,
@@ -14,27 +22,38 @@ const Login = () => {
     handleGoogleSingIn,
     handleLogIn,
     handleResetPass,
+    loading,
   } = useContext(AuthConext);
 
-  // user email state
-  const [email, setEmail] = useState("");
+  if (loading) {
+    return <Loading />;
+  }
 
   // google sign up
   const handleGoogleLogIn = () => {
     handleGoogleSingIn()
-      .then((result) => toast.success("Successfully Logged In"))
+      .then((result) => {
+        toast.success("Successfully Logged In");
+        navigate(from, { replace: true });
+      })
       .catch((err) => toast.error(err.message));
   };
   // faceboook sign up
   const handleFacebookLogIn = () => {
     handleFacebookSingIn()
-      .then((result) => toast.success("Successfully Logged In"))
+      .then((result) => {
+        toast.success("Successfully Logged In");
+        navigate(from, { replace: true });
+      })
       .catch((err) => toast.error(err.message));
   };
   // github sign up
   const handleGithubLogIn = () => {
     handleGithubSingIn()
-      .then((result) => toast.success("Successfully Logged In"))
+      .then((result) => {
+        toast.success("Successfully Logged In");
+        navigate(from, { replace: true });
+      })
       .catch((err) => toast.error(err.message));
   };
 
@@ -47,6 +66,7 @@ const Login = () => {
 
     handleLogIn(email, password)
       .then((result) => {
+        navigate(from, { replace: true });
         toast.success("Login Successfull");
       })
       .catch((err) => toast.error(err.message));
