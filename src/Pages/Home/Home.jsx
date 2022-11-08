@@ -1,9 +1,12 @@
 import React from "react";
+import AboutME from "../../Components/AboutME/AboutME";
+import Carousel from "../../Components/Carousel/Carousel";
 
 const Home = () => {
   return (
     <div>
-      <h2>This is homepage</h2>
+      <Carousel />
+      <AboutME />
     </div>
   );
 };
