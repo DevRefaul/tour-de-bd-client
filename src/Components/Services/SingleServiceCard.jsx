@@ -1,9 +1,9 @@
 import React from "react";
+import { RiStarFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 const SingleServiceCard = ({ service }) => {
-  const { name, img, price, description, _id } = service;
-  console.log(_id);
+  const { name, img, price, description, _id, rating } = service;
 
   return (
     <>
@@ -19,6 +19,10 @@ const SingleServiceCard = ({ service }) => {
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {name}
           </h5>
+          <h4 className="text-xl font-semibold mb-4 flex items-center">
+            Average Ratings : {rating}{" "}
+            <RiStarFill className="ml-2 text-teal-400 text-base" />
+          </h4>
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-teal-400 dark:text-white">
             Price : {price}
           </h5>

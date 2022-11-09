@@ -28,15 +28,17 @@ const routes = createBrowserRouter([
       },
       {
         path: "/services",
-        element: (
-          <PrivateRoute>
-            <Services />
-          </PrivateRoute>
-        ),
+        element: <Services />,
       },
       {
         path: "/services/:id",
-        element: <SingelService />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/services/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <SingelService />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/blog",

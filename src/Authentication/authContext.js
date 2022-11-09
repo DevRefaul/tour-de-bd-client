@@ -21,7 +21,7 @@ const Authentication = ({ children }) => {
     // user state
     const [user, setUser] = useState('')
     const [loading, setLoading] = useState(true)
-    const [refresh, setRefresh] = useState(false)
+    // const [refresh, setRefresh] = useState(false)
 
 
     // google sing in
@@ -69,10 +69,10 @@ const Authentication = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
             setLoading(false)
-            setRefresh(!refresh)
+            // setRefresh(!refresh)
         })
         return () => unsubscribe()
-    }, [refresh])
+    }, [])
 
     const contextValues = {
         handleCreateUser, handleGoogleSingIn, handleFacebookSingIn, handleGithubSingIn, handleLogIn, handleSignOut, handleResetPass, user, loading
