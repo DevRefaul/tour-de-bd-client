@@ -30,13 +30,13 @@ const Carousel = () => {
               <img
                 src={img}
                 alt="slider img"
-                className="h-full w-full object-cover relative "
+                className="h-full w-full object-cover relative"
               />
             </div>
             <div className=" absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold text-white leading-[4rem] text-center">
               <span className="text-2xl">Welcome to</span> <br />{" "}
               <span className="text-5xl font-semibold text-teal-400">
-                Tour de Bangladesh
+                Tour De Bangladesh
               </span>
               <span className="block leading-6">
                 The Best partner you get as your touring guide <br /> for

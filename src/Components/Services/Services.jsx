@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SingleServiceCard from "./SingleServiceCard";
 
 const Services = () => {
-  const datas = ["data1", "data2", "data3"];
+  const [datas, setDatas] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/serviceshome")
+      .then((res) => res.json())
+      .then((data) => setDatas(data.data));
+  }, []);
+
+  console.log(datas);
 
   return (
     <div className="my-10 w-[80%] mx-auto">
@@ -12,8 +20,8 @@ const Services = () => {
       </h2>
       {/* services */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-        {datas.map((data, idx) => (
-          <SingleServiceCard key={idx} />
+        {datas?.map((service, idx) => (
+          <SingleServiceCard key={idx} service={service} />
         ))}
       </div>
       {/* services */}
