@@ -11,7 +11,6 @@ const PrivateRoute = ({ children }) => {
     return <Loading />;
   }
   if (!user) {
-    console.log("private route hitted");
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 

@@ -11,7 +11,6 @@ const ServiceReviewSection = ({ _id, refresh }) => {
     fetch(`http://localhost:5000/reviews/${_id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setReviewData(data.data);
       })
       .catch((err) => console.error(err));
