@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { RiStarFill } from "react-icons/ri";
 import { AuthConext } from "../../Authentication/authContext";
 
 const ServiceReviewSection = ({ _id, refresh }) => {
@@ -41,9 +42,17 @@ const ServiceReviewSection = ({ _id, refresh }) => {
                     <h2 className="text-lg font-semibold ml-6">
                       {review.name ? review.name : "Anonymous"}
                     </h2>
-                    <h4 className="text-lg font-semibold ml-6">
+                    <h4 className="text-lg font-semibold ml-6 flex items-center">
                       Rating :{" "}
-                      {review.rating ? review.rating : "No ratings were added"}
+                      {review.rating ? (
+                        <>
+                          {" "}
+                          {review.rating}{" "}
+                          <RiStarFill className="text-teal-400 ml-1" />
+                        </>
+                      ) : (
+                        "No ratings were added"
+                      )}
                     </h4>
                   </div>
                 </div>

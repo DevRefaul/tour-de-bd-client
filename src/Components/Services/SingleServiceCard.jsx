@@ -1,6 +1,7 @@
 import React from "react";
 import { RiStarFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const SingleServiceCard = ({ service }) => {
   const { name, img, price, description, _id, rating } = service;
@@ -8,13 +9,15 @@ const SingleServiceCard = ({ service }) => {
   return (
     <>
       <div className=" bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <Link to="/">
-          <img
-            className="rounded-t-lg h-60 w-full object-cover"
-            src={img}
-            alt=""
-          />
-        </Link>
+        <PhotoProvider>
+          <PhotoView src={img}>
+            <img
+              className="rounded-t-lg h-60 w-full object-cover cursor-pointer"
+              src={img}
+              alt=""
+            />
+          </PhotoView>
+        </PhotoProvider>
         <div className="p-5">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {name}

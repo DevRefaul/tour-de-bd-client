@@ -75,7 +75,7 @@ const Authentication = ({ children }) => {
     }, [])
 
     const contextValues = {
-        handleCreateUser, handleGoogleSingIn, handleFacebookSingIn, handleGithubSingIn, handleLogIn, handleSignOut, handleResetPass, user, loading
+        handleCreateUser, handleGoogleSingIn, handleFacebookSingIn, handleGithubSingIn, handleLogIn, handleSignOut, handleResetPass, user, loading, setLoading
     }
 
     return (

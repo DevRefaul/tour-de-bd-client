@@ -38,7 +38,7 @@ const EditReview = () => {
   };
 
   return (
-    <div>
+    <div className="flex justify-center items-center my-20">
       <div className="border-2 border-teal-400 rounded p-4">
         <h4 className="text-lg font-bold my-6 text-teal-400">
           Update Your Review

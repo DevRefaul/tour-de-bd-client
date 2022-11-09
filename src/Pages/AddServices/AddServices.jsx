@@ -13,9 +13,18 @@ const AddServices = () => {
     const price = form.price.value;
     const duration = form.time.value;
     const review = form.review.value;
+    const createdTime = new Date();
     const description = form.text.value;
 
-    const service = { name, img, price, duration, review, description };
+    const service = {
+      name,
+      img,
+      price,
+      duration,
+      review,
+      description,
+      createdTime,
+    };
     fetch("http://localhost:5000/addservice", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -53,6 +62,7 @@ const AddServices = () => {
                 id="name"
                 placeholder="Service Name"
                 className="block w-full py-2 px-1 outline-none border border-teal-400 focus:border-none rounded"
+                required
               />
             </div>
             {/* service price */}
@@ -64,6 +74,7 @@ const AddServices = () => {
                 id="price"
                 placeholder="Service price"
                 className="block w-full py-2 px-1 outline-none border border-teal-400 focus:border-none rounded"
+                required
               />
             </div>
             {/* service Duration */}
@@ -75,6 +86,7 @@ const AddServices = () => {
                 id="time"
                 placeholder="Service Duration How Many Days and Nights"
                 className="block w-full py-2 px-1 outline-none border border-teal-400 focus:border-none rounded"
+                required
               />
             </div>
             {/* service review */}
@@ -86,6 +98,7 @@ const AddServices = () => {
                 id="review"
                 placeholder="Service Review How much Point in 5"
                 className="block w-full py-2 px-1 outline-none border border-teal-400 focus:border-none rounded"
+                required
               />
             </div>
             {/* service iamge */}
@@ -97,6 +110,7 @@ const AddServices = () => {
                 id="image"
                 placeholder="Service Image URL"
                 className="block w-full py-2 px-1 outline-none border border-teal-400 focus:border-none rounded"
+                required
               />
             </div>
           </div>
@@ -112,6 +126,7 @@ const AddServices = () => {
               rows="10"
               placeholder="Write down something about this service "
               className="block w-full py-2 px-1 outline-none border border-teal-400 focus:border-none rounded"
+              required
             ></textarea>
           </div>
 

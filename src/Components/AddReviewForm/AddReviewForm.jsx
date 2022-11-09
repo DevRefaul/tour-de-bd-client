@@ -7,9 +7,18 @@ const AddReviewForm = ({ _id, refresh, setRefresh }) => {
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
+    const rating = form.rating.value;
     const message = form.review.value;
+    const reviewTime = new Date();
     const reviewedService = _id;
-    const review = { name, email, message, reviewedService };
+    const review = {
+      name,
+      email,
+      message,
+      rating,
+      reviewedService,
+      reviewTime,
+    };
 
     fetch("http://localhost:5000/postreview", {
       method: "POST",

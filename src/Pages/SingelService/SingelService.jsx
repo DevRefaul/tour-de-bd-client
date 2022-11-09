@@ -4,6 +4,7 @@ import { RiStarFill } from "react-icons/ri";
 import ServiceReviewSection from "../../Components/ServiceReviewSection/ServiceReviewSection";
 import { AuthConext } from "../../Authentication/authContext";
 import AddReviewForm from "../../Components/AddReviewForm/AddReviewForm";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const SingelService = () => {
   const service = useLoaderData();
@@ -21,7 +22,15 @@ const SingelService = () => {
       <div>
         <h2 className="text-3xl font-semibold">{name}</h2>
         <div className="w-[50%]">
-          <img src={img} alt={name + "image"} className="w-full my-4" />
+          <PhotoProvider>
+            <PhotoView src={img}>
+              <img
+                src={img}
+                alt={name + "image"}
+                className="w-full my-4 cursor-pointer"
+              />
+            </PhotoView>
+          </PhotoProvider>
         </div>
         <h4 className="text-xl font-semibold mb-4">
           Duration Of This Tour : {duration}

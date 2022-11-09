@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const AboutME = () => {
   return (
@@ -33,11 +34,15 @@ const AboutME = () => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-        <img
-          className="xl:w-[80%]"
-          src="https://i.ibb.co/FbK3Zsr/kalen-emsley-mg-JSkg-Io-JI-unsplash-1.jpg"
-          alt="man in the mountains"
-        />
+        <PhotoProvider>
+          <PhotoView src="https://i.ibb.co/FbK3Zsr/kalen-emsley-mg-JSkg-Io-JI-unsplash-1.jpg">
+            <img
+              className="xl:w-[80%] cursor-pointer"
+              src="https://i.ibb.co/FbK3Zsr/kalen-emsley-mg-JSkg-Io-JI-unsplash-1.jpg"
+              alt="man in the mountains"
+            />
+          </PhotoView>
+        </PhotoProvider>
       </div>
     </div>
   );

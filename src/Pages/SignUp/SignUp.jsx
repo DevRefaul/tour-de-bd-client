@@ -18,6 +18,7 @@ const SignUp = () => {
     handleGithubSingIn,
     handleFacebookSingIn,
     loading,
+    setLoading,
   } = useContext(AuthConext);
 
   if (loading) {
@@ -36,7 +37,10 @@ const SignUp = () => {
 
         navigate(from, { replace: true });
       })
-      .catch((err) => toast.error(err.message));
+      .catch((err) => {
+        toast.error(err.message);
+        return setLoading(false);
+      });
 
     form.reset();
   };
@@ -49,7 +53,10 @@ const SignUp = () => {
 
         navigate(from, { replace: true });
       })
-      .catch((err) => toast.error(err.message));
+      .catch((err) => {
+        toast.error(err.message);
+        return setLoading(false);
+      });
   };
   // faceboook sign up
   const handleFacebookRegister = () => {
@@ -59,7 +66,10 @@ const SignUp = () => {
 
         navigate(from, { replace: true });
       })
-      .catch((err) => toast.error(err.message));
+      .catch((err) => {
+        toast.error(err.message);
+        return setLoading(false);
+      });
   };
   // github sign up
   const handleGithubRegister = () => {
@@ -69,7 +79,10 @@ const SignUp = () => {
 
         navigate(from, { replace: true });
       })
-      .catch((err) => toast.error(err.message));
+      .catch((err) => {
+        toast.error(err.message);
+        return setLoading(false);
+      });
   };
 
   return (

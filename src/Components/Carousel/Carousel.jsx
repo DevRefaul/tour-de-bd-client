@@ -3,6 +3,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "./carousel.css";
 import { Link } from "react-router-dom";
 
+
 const Carousel = () => {
   const images = [
     "https://i.ibb.co/6F7CQTV/pexels-fabian-wiktor-994605-1.jpg",
@@ -30,7 +31,7 @@ const Carousel = () => {
               <img
                 src={img}
                 alt="slider img"
-                className="h-full w-full object-cover relative"
+                className="h-full w-full object-cover relative cursor-pointer"
               />
             </div>
             <div className=" absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-semibold text-white leading-[4rem] text-center">

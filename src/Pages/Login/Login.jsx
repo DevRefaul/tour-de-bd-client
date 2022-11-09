@@ -7,6 +7,8 @@ import Loading from "../Loading/Loading";
 const Login = () => {
   document.title = "Login-Tour DE Bangladesh";
 
+  // const [loading, setLoading] = useState(true);
+
   // user email state
   const [email, setEmail] = useState("");
   const location = useLocation();
@@ -21,41 +23,49 @@ const Login = () => {
     handleLogIn,
     handleResetPass,
     loading,
+    setLoading,
   } = useContext(AuthConext);
-
   if (loading) {
     return <Loading />;
   }
-
   // google sign up
   const handleGoogleLogIn = () => {
     handleGoogleSingIn()
       .then((result) => {
         toast.success("Successfully Logged In");
-
         navigate(from, { replace: true });
+        setLoading(false);
       })
-      .catch((err) => toast.error(err.message));
+      .catch((err) => {
+        toast.error(err.message);
+        return setLoading(false);
+      });
   };
   // faceboook sign up
   const handleFacebookLogIn = () => {
     handleFacebookSingIn()
       .then((result) => {
         toast.success("Successfully Logged In");
-
         navigate(from, { replace: true });
+        setLoading(false);
       })
-      .catch((err) => toast.error(err.message));
+      .catch((err) => {
+        toast.error(err.message);
+        return setLoading(false);
+      });
   };
   // github sign up
   const handleGithubLogIn = () => {
     handleGithubSingIn()
       .then((result) => {
         toast.success("Successfully Logged In");
-
         navigate(from, { replace: true });
+        setLoading(false);
       })
-      .catch((err) => toast.error(err.message));
+      .catch((err) => {
+        toast.error(err.message);
+        return setLoading(false);
+      });
   };
 
   // login with email and pass
@@ -68,10 +78,13 @@ const Login = () => {
     handleLogIn(email, password)
       .then((result) => {
         toast.success("Login Successfull");
-
         navigate(from, { replace: true });
+        setLoading(false);
       })
-      .catch((err) => toast.error(err.message));
+      .catch((err) => {
+        toast.error(err.message);
+        return setLoading(false);
+      });
 
     form.reset();
   };
@@ -84,7 +97,10 @@ const Login = () => {
           "Password reset email sent to your email. Do not forget to check spam folder."
         )
       )
-      .catch((err) => toast.error(err.message));
+      .catch((err) => {
+        toast.error(err.message);
+        loading(false);
+      });
   };
 
   return (
