@@ -1,12 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiStarFill } from "react-icons/ri";
-import { AuthConext } from "../../Authentication/authContext";
 
 const ServiceReviewSection = ({ _id, refresh }) => {
-  const { user } = useContext(AuthConext);
   const [reviewData, setReviewData] = useState([]);
-
-  const { displayName, photoURL } = user;
 
   useEffect(() => {
     fetch(`https://tour-de-bd-server.vercel.app/reviews/${_id}`)
@@ -29,11 +25,11 @@ const ServiceReviewSection = ({ _id, refresh }) => {
                   <div>
                     <img
                       src={
-                        photoURL
-                          ? photoURL
+                        review.photo
+                          ? review.photo
                           : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPyGNr2qL63Sfugk2Z1-KBEwMGOfycBribew&usqp=CAU"
                       }
-                      alt={displayName + "photo"}
+                      alt={review.name + "photo"}
                       className="w-16 h-16 border-2 border-teal-600 rounded-full"
                     />
                   </div>

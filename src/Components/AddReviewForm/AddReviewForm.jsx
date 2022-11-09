@@ -8,6 +8,7 @@ const AddReviewForm = ({ _id, refresh, setRefresh }) => {
     const name = form.name.value;
     const email = form.email.value;
     const rating = form.rating.value;
+    const photo = form.photo.value;
     const message = form.review.value;
     const reviewTime = new Date();
     const reviewedService = _id;
@@ -18,6 +19,7 @@ const AddReviewForm = ({ _id, refresh, setRefresh }) => {
       rating,
       reviewedService,
       reviewTime,
+      photo,
     };
 
     fetch("https://tour-de-bd-server.vercel.app/postreview", {
@@ -75,6 +77,18 @@ const AddReviewForm = ({ _id, refresh, setRefresh }) => {
               placeholder="Your Rating"
               name="rating"
               id="rating"
+              className="w-full px-2 py-1 rounded"
+              required
+            />
+          </div>
+          {/* photo url field */}
+          <div>
+            <label htmlFor="email">Your Photo URL</label>
+            <input
+              type="text"
+              placeholder="Your Photo URL"
+              name="photo"
+              id="photo"
               className="w-full px-2 py-1 rounded"
               required
             />
