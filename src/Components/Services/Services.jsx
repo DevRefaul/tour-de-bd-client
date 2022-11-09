@@ -11,7 +11,6 @@ const Services = () => {
       .then((data) => setDatas(data.data));
   }, []);
 
-  console.log(datas);
 
   return (
     <div className="my-10 w-[80%] mx-auto">

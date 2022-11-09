@@ -19,9 +19,12 @@ const AddReviewForm = ({ _id, refresh, setRefresh }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        toast.success("Successfully added your review");
-        setRefresh(!refresh);
+        console.log(data.data);
+        const { insertedId } = data.data;
+        if (insertedId) {
+          toast.success("Successfully added your review");
+          setRefresh(!refresh);
+        }
       })
       .catch((err) => console.error(err));
     form.reset();
@@ -44,7 +47,7 @@ const AddReviewForm = ({ _id, refresh, setRefresh }) => {
               required
             />
           </div>
-          {/* Name field */}
+          {/* email field */}
           <div>
             <label htmlFor="email">Email</label>
             <input
@@ -56,8 +59,20 @@ const AddReviewForm = ({ _id, refresh, setRefresh }) => {
               required
             />
           </div>
+          {/* rating field */}
+          <div>
+            <label htmlFor="email">Rating</label>
+            <input
+              type="text"
+              placeholder="Your Rating"
+              name="rating"
+              id="rating"
+              className="w-full px-2 py-1 rounded"
+              required
+            />
+          </div>
         </div>
-        {/* Name field */}
+        {/* textarea field */}
         <div className="mt-4">
           <label htmlFor="review">Your Review</label>
           <textarea

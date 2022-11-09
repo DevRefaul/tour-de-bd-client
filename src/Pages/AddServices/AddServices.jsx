@@ -45,7 +45,7 @@ const AddServices = () => {
                 name="price"
                 id="price"
                 placeholder="Service price"
-                className="block outline-none border border-teal-400 focus:border-2"
+                className="block w-full py-2 px-1 outline-none border border-teal-400 focus:border-none rounded"
               />
             </div>
             {/* service Duration */}
@@ -56,7 +56,7 @@ const AddServices = () => {
                 name="time"
                 id="time"
                 placeholder="Service Duration How Many Days and Nights"
-                className="block outline-none border border-teal-400 focus:border-2"
+                className="block w-full py-2 px-1 outline-none border border-teal-400 focus:border-none rounded"
               />
             </div>
             {/* service review */}
@@ -67,7 +67,7 @@ const AddServices = () => {
                 name="review"
                 id="review"
                 placeholder="Service Review How much Point in 5"
-                className="block outline-none border border-teal-400 focus:border-2"
+                className="block w-full py-2 px-1 outline-none border border-teal-400 focus:border-none rounded"
               />
             </div>
             {/* service iamge */}
@@ -78,7 +78,7 @@ const AddServices = () => {
                 name="image"
                 id="image"
                 placeholder="Service Image URL"
-                className="block outline-none border border-teal-400 focus:border-2"
+                className="block w-full py-2 px-1 outline-none border border-teal-400 focus:border-none rounded"
               />
             </div>
           </div>
@@ -93,7 +93,7 @@ const AddServices = () => {
               cols="30"
               rows="10"
               placeholder="Write down something about this service "
-              className="block w-full  border border-teal-400 ring-0 outline-none "
+              className="block w-full py-2 px-1 outline-none border border-teal-400 focus:border-none rounded"
             ></textarea>
           </div>
 
