@@ -34,7 +34,7 @@ const routes = createBrowserRouter([
       {
         path: "/services/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://tour-de-bd-server.vercel.app/services/${params.id}`),
         element: (
           <PrivateRoute>
             <SingelService />
@@ -60,7 +60,7 @@ const routes = createBrowserRouter([
       {
         path: "/updatereview/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/myreviews/${params.id}`),
+          fetch(`https://tour-de-bd-server.vercel.app/myreviews/${params.id}`),
         element: (
           <PrivateRoute>
             <EditReview />

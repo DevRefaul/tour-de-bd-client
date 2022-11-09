@@ -19,7 +19,7 @@ const EditReview = () => {
     const message = form.review.value;
     const updatedReview = { name, email, message, rating };
 
-    fetch(`http://localhost:5000/updatereview/${_id}`, {
+    fetch(`https://tour-de-bd-server.vercel.app/updatereview/${_id}`, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(updatedReview),

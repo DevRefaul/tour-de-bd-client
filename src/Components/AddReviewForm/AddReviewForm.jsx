@@ -20,7 +20,7 @@ const AddReviewForm = ({ _id, refresh, setRefresh }) => {
       reviewTime,
     };
 
-    fetch("http://localhost:5000/postreview", {
+    fetch("https://tour-de-bd-server.vercel.app/postreview", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(review),

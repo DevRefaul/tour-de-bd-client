@@ -9,7 +9,7 @@ const Services = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://tour-de-bd-server.vercel.app/services")
       .then((res) => res.json())
       .then((data) => {
         setDatas(data.data);

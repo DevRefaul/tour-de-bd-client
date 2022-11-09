@@ -9,7 +9,7 @@ const ServiceReviewSection = ({ _id, refresh }) => {
   const { displayName, photoURL } = user;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews/${_id}`)
+    fetch(`https://tour-de-bd-server.vercel.app/reviews/${_id}`)
       .then((res) => res.json())
       .then((data) => {
         setReviewData(data.data);

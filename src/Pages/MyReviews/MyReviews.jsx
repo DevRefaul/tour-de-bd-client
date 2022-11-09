@@ -20,7 +20,7 @@ const MyReviews = () => {
   const { email } = user;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myreviews?email=${email}`)
+    fetch(`https://tour-de-bd-server.vercel.app/myreviews?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -35,10 +35,10 @@ const MyReviews = () => {
   // delete review section
   const handleDeleteReview = (id) => {
     //   getting confirmation from user
-    const confirm = window.confirm();
+    const confirm = window.confirm("Confirm Delete This Review");
 
     if (confirm) {
-      fetch(`http://localhost:5000/deletereview/${id}`, {
+      fetch(`https://tour-de-bd-server.vercel.app/deletereview/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -57,7 +57,7 @@ const MyReviews = () => {
   };
 
   return (
-    <div className="w-[80%] mx-auto my-10">
+    <div className="w-[80%] mx-auto my-10 min-h-[70vh]">
       <h2 className="text-2xl font-bold text-center text-teal-400 my-4">
         Here is all your reviews
       </h2>

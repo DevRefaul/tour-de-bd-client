@@ -25,7 +25,7 @@ const AddServices = () => {
       description,
       createdTime,
     };
-    fetch("http://localhost:5000/addservice", {
+    fetch("https://tour-de-bd-server.vercel.app/addservice", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(service),
