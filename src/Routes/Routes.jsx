@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AddServices from "../Pages/AddServices/AddServices";
 import Blog from "../Pages/Blog/Blog";
 import Contact from "../Pages/Contact/Contact";
+import EditReview from "../Pages/EditReview/EditReview";
 import Error from "../Pages/Error/Error";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -53,6 +54,16 @@ const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyReviews />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updatereview/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/myreviews/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <EditReview />
           </PrivateRoute>
         ),
       },

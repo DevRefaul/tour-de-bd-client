@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 import { AuthConext } from "../../Authentication/authContext";
 import Loading from "../Loading/Loading";
 
@@ -33,19 +34,26 @@ const MyReviews = () => {
 
   // delete review section
   const handleDeleteReview = (id) => {
-    fetch(`http://localhost:5000/deletereview/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.data);
-        const { deletedCount } = data.data;
-        if (deletedCount > 0) {
-          setRefresh(!refresh);
-          toast.success("Successfully Deleted The Review");
-        }
+    //   getting confirmation from user
+    const confirm = window.confirm();
+
+    if (confirm) {
+      fetch(`http://localhost:5000/deletereview/${id}`, {
+        method: "DELETE",
       })
-      .catch((err) => console.error(err));
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.data);
+          const { deletedCount } = data.data;
+          if (deletedCount > 0) {
+            setRefresh(!refresh);
+            toast.success("Successfully Deleted The Review");
+          }
+        })
+        .catch((err) => console.error(err));
+    } else {
+      toast.error("Can't Delete This Review");
+    }
   };
 
   return (
@@ -101,9 +109,14 @@ const MyReviews = () => {
 
                       {/* buttons */}
                       <div className="md:flex justify-end w-full mt-4">
-                        <button className="block text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-                          Update Review
-                        </button>
+                        {/* update btn */}
+                        <Link to={`/updatereview/${_id}`}>
+                          <button className="block text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                            Update Review
+                          </button>
+                        </Link>
+
+                        {/* delete btn */}
                         <button
                           onClick={() => handleDeleteReview(_id)}
                           className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"

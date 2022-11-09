@@ -10,7 +10,6 @@ const AddReviewForm = ({ _id, refresh, setRefresh }) => {
     const message = form.review.value;
     const reviewedService = _id;
     const review = { name, email, message, reviewedService };
-    console.log(_id);
 
     fetch("http://localhost:5000/postreview", {
       method: "POST",
