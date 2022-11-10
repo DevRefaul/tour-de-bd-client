@@ -7,8 +7,6 @@ import Loading from "../Loading/Loading";
 const Login = () => {
   document.title = "Login-Tour DE Bangladesh";
 
-  // const [loading, setLoading] = useState(true);
-
   // user email state
   const [email, setEmail] = useState("");
   const location = useLocation();
@@ -79,7 +77,7 @@ const Login = () => {
       .then((result) => {
         toast.success("Login Successfull");
         // get jwt token
-        const currentUser =  { email:result?.user?.email}
+        const currentUser = { email: result?.user?.email };
         fetch("https://tour-de-bd-server.vercel.app/jwt", {
           method: "POST",
           headers: { "content-type": "application/json" },
@@ -87,17 +85,18 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data)
-              // setting token to localstorage
-            localStorage.setItem('token', data.token)
+            console.log(data);
+            // setting token to localstorage
+            localStorage.setItem("token", data.token);
             navigate(from, { replace: true });
             setLoading(false);
           })
-          .catch((err) => console.log(err.message));
+          .catch((err) => {
+            console.log(err.message);
+            setLoading(false);
+          });
 
         // extra works
-        
-        
       })
       .catch((err) => {
         toast.error(err.message);
@@ -110,14 +109,15 @@ const Login = () => {
   // password reset
   const handleResetPassword = () => {
     handleResetPass(email)
-      .then((result) =>
+      .then((result) => {
         toast.success(
           "Password reset email sent to your email. Do not forget to check spam folder."
-        )
-      )
+        );
+        setLoading(false);
+      })
       .catch((err) => {
         toast.error(err.message);
-        loading(false);
+        setLoading(false);
       });
   };
 
