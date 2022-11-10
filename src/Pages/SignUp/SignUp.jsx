@@ -19,7 +19,6 @@ const SignUp = () => {
     handleFacebookSingIn,
     loading,
     setLoading,
-    user,
   } = useContext(AuthConext);
 
   if (loading) {
@@ -27,28 +26,31 @@ const SignUp = () => {
   }
 
   const handleSingUp = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const photo = form.photo.value;
-    const password = form.password.value;
+    try {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value;
+      const email = form.email.value;
+      const photo = form.photo.value;
+      const password = form.password.value;
 
-    handleCreateUser(email, password)
-      .then((result) => {
-        user.displayName = name;
-        user.email = email;
-        user.photoURL = photo;
-        toast.success("Register Successfull");
+      handleCreateUser(email, password)
+        .then((result) => {
+          result.user.displayName = name;
+          result.user.email = email;
+          result.user.photoURL = photo;
+          toast.success("Register Successfull");
+          navigate(from, { replace: true });
+        })
+        .catch((err) => {
+          toast.error(err.message);
+          return setLoading(false);
+        });
 
-        navigate(from, { replace: true });
-      })
-      .catch((err) => {
-        toast.error(err.message);
-        return setLoading(false);
-      });
-
-    form.reset();
+      form.reset();
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   // google sign up
