@@ -1,7 +1,8 @@
 import React from "react";
 import toast from "react-hot-toast";
 
-const AddReviewForm = ({ _id, refresh, setRefresh }) => {
+const AddReviewForm = ({ _id, name, refresh, setRefresh }) => {
+  const serviceName = name;
   const handlePostReview = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -12,6 +13,7 @@ const AddReviewForm = ({ _id, refresh, setRefresh }) => {
     const message = form.review.value;
     const reviewTime = new Date();
     const reviewedService = _id;
+
     const review = {
       name,
       email,
@@ -20,6 +22,7 @@ const AddReviewForm = ({ _id, refresh, setRefresh }) => {
       reviewedService,
       reviewTime,
       photo,
+      serviceName,
     };
 
     fetch("https://tour-de-bd-server.vercel.app/postreview", {

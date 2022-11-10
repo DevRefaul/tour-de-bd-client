@@ -54,7 +54,12 @@ return (
 
       {user?.uid ? (
         <>
-          <AddReviewForm _id={_id} setRefresh={setRefresh} refresh={refresh} />
+          <AddReviewForm
+            name={name}
+            _id={_id}
+            setRefresh={setRefresh}
+            refresh={refresh}
+          />
         </>
       ) : (
         <>

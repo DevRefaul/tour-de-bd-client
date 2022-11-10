@@ -19,7 +19,6 @@ const MyReviews = () => {
   const { user, photoURL, handleSignOut } = useContext(AuthConext);
   const { email } = user;
 
-
   useEffect(() => {
     fetch(`https://tour-de-bd-server.vercel.app/myreviews?email=${email}`, {
       headers: {
@@ -45,6 +44,8 @@ const MyReviews = () => {
   }, [email, refresh, handleSignOut]);
 
   console.log(reviews);
+
+  // fetching the service that was
 
   // delete review section
   const handleDeleteReview = (id) => {
@@ -82,10 +83,11 @@ const MyReviews = () => {
         <>
           {" "}
           {/* reviews section */}
-          {reviews.length || reviews === "undefined" ? (
+          {reviews.length || reviews !== "undefined" ? (
             <div>
               {reviews.map((review, idx) => {
-                const { _id, name, message, rating } = review;
+                const { _id, name, message, rating, serviceName } = review;
+                // setService(reviewedService);
                 return (
                   <div key={idx}>
                     <div className="border border-teal-300 p-4 rounded my-4">
@@ -114,6 +116,11 @@ const MyReviews = () => {
                               {rating ? rating : "No ratings were added"}
                             </h4>
                           </div>
+                        </div>
+                        <div>
+                          <h2 className="text-2xl font-bold text-teal-400">
+                            {serviceName}
+                          </h2>
                         </div>
                       </div>
 
