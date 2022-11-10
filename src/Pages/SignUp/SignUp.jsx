@@ -132,8 +132,8 @@ const SignUp = () => {
               </label>
               <input
                 type="text"
-                name="image"
-                id="image"
+                name="photo"
+                id="photo"
                 placeholder="Your image URl"
                 className="w-full px-4 py-3 rounded-md border-gray-700 bg-white text-gray-800 focus:border-teal-400"
               />
