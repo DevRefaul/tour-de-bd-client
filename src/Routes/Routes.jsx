@@ -36,11 +36,7 @@ const routes = createBrowserRouter([
         path: "/services/:id",
         loader: ({ params }) =>
           fetch(`https://tour-de-bd-server.vercel.app/services/${params.id}`),
-        element: (
-          <PrivateRoute>
-            <SingelService />
-          </PrivateRoute>
-        ),
+        element: <SingelService />,
       },
       {
         path: "/blog",
