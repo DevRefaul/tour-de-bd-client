@@ -19,6 +19,7 @@ const MyReviews = () => {
   const { user, photoURL, handleSignOut } = useContext(AuthConext);
   const { email } = user;
 
+
   useEffect(() => {
     fetch(`https://tour-de-bd-server.vercel.app/myreviews?email=${email}`, {
       headers: {
@@ -32,17 +33,18 @@ const MyReviews = () => {
             .then((data) => toast.error("Logged Out"))
             .catch((err) => toast.error(err.message));
         }
-        res.json();
+        return res.json();
       })
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         setReviews(data.data);
         setLoading(false);
+        setRefresh(true);
       })
       .catch((err) => console.error(err));
   }, [email, refresh, handleSignOut]);
 
-  // console.log(reviews);
+  console.log(reviews);
 
   // delete review section
   const handleDeleteReview = (id) => {
@@ -80,7 +82,7 @@ const MyReviews = () => {
         <>
           {" "}
           {/* reviews section */}
-          {reviews.length ? (
+          {reviews.length || reviews === "undefined" ? (
             <div>
               {reviews.map((review, idx) => {
                 const { _id, name, message, rating } = review;

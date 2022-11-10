@@ -53,7 +53,7 @@ const Header = () => {
             >
               <Dropdown.Header>
                 <span className="block text-sm">
-                  {user.name ? user.name : "Anonymous"}
+                  {user.displayName ? user.displayName : "Anonymous"}
                 </span>
                 <span className="block truncate text-sm font-medium">
                   {user.email ? user.email : "no user email"}
@@ -79,7 +79,15 @@ const Header = () => {
                   Add Services
                 </NavLink>
               </Dropdown.Item>
-              {/* <Dropdown.Item>Profile</Dropdown.Item> */}
+              <Dropdown.Item>
+                <NavLink
+                  to={`/updateprofile`}
+                  className="block capitalize text-black rounded md:bg-transparent  md:p-0 dark:text-white"
+                  aria-current="page"
+                >
+                  Profile
+                </NavLink>
+              </Dropdown.Item>
               <Dropdown.Divider />
 
               <Dropdown.Item>

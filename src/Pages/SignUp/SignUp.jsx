@@ -19,6 +19,7 @@ const SignUp = () => {
     handleFacebookSingIn,
     loading,
     setLoading,
+    user,
   } = useContext(AuthConext);
 
   if (loading) {
@@ -28,11 +29,16 @@ const SignUp = () => {
   const handleSingUp = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
+    const photo = form.photo.value;
     const password = form.password.value;
 
     handleCreateUser(email, password)
       .then((result) => {
+        user.displayName = name;
+        user.email = email;
+        user.photoURL = photo;
         toast.success("Register Successfull");
 
         navigate(from, { replace: true });

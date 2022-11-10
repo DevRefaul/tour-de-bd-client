@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, onAuthStateChanged } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, onAuthStateChanged, updateProfile } from 'firebase/auth'
 import app from "../Firebase/firebase";
 
 const auth = getAuth(app)
@@ -21,7 +21,6 @@ const Authentication = ({ children }) => {
     // user state
     const [user, setUser] = useState('')
     const [loading, setLoading] = useState(true)
-    // const [refresh, setRefresh] = useState(false)
 
 
     // google sing in
@@ -64,18 +63,23 @@ const Authentication = ({ children }) => {
         return signOut(auth)
     }
 
+    // update user profile
+    const handleUpdateProfile = (name, photo) => {
+        return updateProfile(auth.currentUser, { displayName: name, photoURL: photo })
+    }
+
+
     // onauthstatechanged
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
             setLoading(false)
-            // setRefresh(!refresh)
         })
         return () => unsubscribe()
     }, [])
 
     const contextValues = {
-        handleCreateUser, handleGoogleSingIn, handleFacebookSingIn, handleGithubSingIn, handleLogIn, handleSignOut, handleResetPass, user, loading, setLoading
+        handleCreateUser, handleGoogleSingIn, handleFacebookSingIn, handleGithubSingIn, handleLogIn, handleSignOut, handleResetPass, user, loading, setLoading, handleUpdateProfile
     }
 
     return (
