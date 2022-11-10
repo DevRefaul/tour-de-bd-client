@@ -1,0 +1,28 @@
+ul {
+    align-items: center !important;
+}
+
+/* 
+@media (max-width: 960px) {
+
+    #navToggle {
+        display: block;
+    }
+
+    #navCollapse {
+        display: block !important;
+        background-color: red !important;
+        /* display: none !important; 
+    }
+}
+
+@media (min-width: 1024px) {
+
+
+    #navCollapse {
+        /* display: block !important;
+        background-color: red !important; 
+        display: block !important;
+    }
+} 
+*/
