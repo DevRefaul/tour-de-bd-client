@@ -16,8 +16,6 @@ const Header = () => {
       .catch((err) => toast.err(err.message));
   };
 
-  console.log(user);
-
   return (
     <>
       <Navbar

@@ -78,8 +78,26 @@ const Login = () => {
     handleLogIn(email, password)
       .then((result) => {
         toast.success("Login Successfull");
-        navigate(from, { replace: true });
-        setLoading(false);
+        // get jwt token
+        const currentUser =  { email:result?.user?.email}
+        fetch("https://tour-de-bd-server.vercel.app/jwt", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data)
+              // setting token to localstorage
+            localStorage.setItem('token', data.token)
+            navigate(from, { replace: true });
+            setLoading(false);
+          })
+          .catch((err) => console.log(err.message));
+
+        // extra works
+        
+        
       })
       .catch((err) => {
         toast.error(err.message);
@@ -102,6 +120,11 @@ const Login = () => {
         loading(false);
       });
   };
+
+  // get jwt token and verify
+  // const verifyUser = ({ user }) => {
+  //   console.log("function hitted");
+  // };
 
   return (
     <>
@@ -281,6 +304,6 @@ const Login = () => {
       </div>
     </>
   );
-};
+};;
 
 export default Login;

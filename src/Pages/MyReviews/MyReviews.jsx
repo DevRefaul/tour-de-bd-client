@@ -16,19 +16,31 @@ const MyReviews = () => {
   // data state
   const [reviews, setReviews] = useState([]);
 
-  const { user, photoURL } = useContext(AuthConext);
+  const { user, photoURL, handleSignOut } = useContext(AuthConext);
   const { email } = user;
 
   useEffect(() => {
-    fetch(`https://tour-de-bd-server.vercel.app/myreviews?email=${email}`)
-      .then((res) => res.json())
+    fetch(`https://tour-de-bd-server.vercel.app/myreviews?email=${email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          handleSignOut()
+            .then((res) => res.json())
+            .then((data) => toast.error("Logged Out"))
+            .catch((err) => toast.error(err.message));
+        }
+        res.json();
+      })
       .then((data) => {
         // console.log(data);
         setReviews(data.data);
         setLoading(false);
       })
       .catch((err) => console.error(err));
-  }, [email, refresh]);
+  }, [email, refresh, handleSignOut]);
 
   // console.log(reviews);
 
