@@ -42,7 +42,9 @@ return (
         <RiStarFill className="ml-2 text-teal-400 text-base" />
       </h4>
       <p className="text-lg font-medium py-3">{description}</p>
-      <h2 className="text-2xl font-bold text-teal-400 mt-4">Price : {price}</h2>
+      <h2 className="text-2xl font-bold text-teal-400 mt-4">
+        Tour Cost : {price}
+      </h2>
     </div>
 
     {/* review section */}
