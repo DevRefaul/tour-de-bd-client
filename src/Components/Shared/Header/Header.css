@@ -15,14 +15,13 @@ ul {
         /* display: none !important; 
     }
 }
+*/
 
 @media (min-width: 1024px) {
 
+nav {
+        width: 80% !important;
+        margin: 0 auto !important;
 
-    #navCollapse {
-        /* display: block !important;
-        background-color: red !important; 
-        display: block !important;
     }
 } 
-*/
