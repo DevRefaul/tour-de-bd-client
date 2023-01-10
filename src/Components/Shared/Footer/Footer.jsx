@@ -45,20 +45,24 @@ const Footer = () => {
               </h2>
               <ul className="text-gray-600 dark:text-gray-400">
                 <li className="mb-4">
-                  <Link
-                    to="https://github.com/devrefaul"
+                  <a
+                    href="https://github.com/devrefaul"
+                    target="_blank"
+                    rel="noreferrer"
                     className="hover:underline "
                   >
                     Github
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    to="https://www.facebook.com/refaulislam.rafee.5/"
+                  <a
+                    href="https://www.facebook.com/refaulislam.rafee.5/"
                     className="hover:underline"
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     Facebook
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
