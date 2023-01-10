@@ -27,7 +27,7 @@ const SingleServiceCard = ({ service }) => {
             <RiStarFill className="ml-2 text-teal-400 text-base" />
           </h4>
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-teal-400 dark:text-white">
-            Price : {price}
+            Tour Cost : {price} Taka
           </h5>
 
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
