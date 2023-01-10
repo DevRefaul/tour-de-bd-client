@@ -21,7 +21,7 @@ const Services = () => {
   return (
     <div className="w-[80%] mx-auto my-10">
       <h2 className="text-3xl font-bold text-teal-400 my-4 text-center">
-        This is services page
+        My Services
       </h2>
 
       {loading ? (
