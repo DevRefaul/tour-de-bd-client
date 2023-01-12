@@ -72,12 +72,12 @@ const Footer = () => {
               </h2>
               <ul className="text-gray-600 dark:text-gray-400">
                 <li className="mb-4">
-                  <Link to="#" className="hover:underline">
+                  <Link to="/" className="hover:underline">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="hover:underline">
+                  <Link to="/" className="hover:underline">
                     Terms &amp; Conditions
                   </Link>
                 </li>
@@ -92,7 +92,7 @@ const Footer = () => {
         {/* bottom footer start */}
         <div className="sm:flex sm:items-center sm:justify-between w-[80%] mx-auto">
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-            © 2022{" "}
+            © 2023{" "}
             <Link to="https://github.com/devrefaul" className="hover:underline">
               MD.Refaul Islam
             </Link>
