@@ -8,10 +8,10 @@ const Blog = () => {
         Welcome to my Blog Page
       </h2>
       {/* questions and asnwers */}
-      <div className="mt-10">
+      <div className="my-20">
         {/* no 1 */}
         <div className="my-4 pb-4 border-b border-teal-400">
-          <div className="flex justify-center">
+          <div className="flex justify-center lg:float-left lg:p-8">
             <img
               src="https://i.ibb.co/FV0rYL2/sql-vs-nosql.jpg"
               alt="Difference between SQL and NoSQL"
@@ -70,7 +70,7 @@ const Blog = () => {
 
         {/* no 2 */}
         <div className="my-4 pb-4 border-b border-teal-400">
-          <div className="flex justify-center">
+          <div className="flex justify-center  lg:float-left lg:p-8">
             <img
               src="https://i.ibb.co/cDMc700/JWT-blogpost.png"
               alt="Difference between SQL and NoSQL"
@@ -101,7 +101,7 @@ const Blog = () => {
 
         {/* np 3 */}
         <div className="my-4 pb-4 border-b border-teal-400">
-          <div className="flex justify-center">
+          <div className="flex justify-center  lg:float-left lg:p-8">
             <img
               src="https://i.ibb.co/RvcH4TV/Know-the-difference-between-javascript-and-node-js-1-1-1.jpg"
               alt="Difference between SQL and NoSQL"
@@ -134,7 +134,7 @@ const Blog = () => {
 
         {/* no 4 */}
         <div className="my-4">
-          <div className="flex justify-center">
+          <div className="flex justify-center  lg:float-left lg:p-8">
             <img
               src="https://i.ibb.co/6DwtYq2/NWAGFGdrawio-660x284.png"
               alt="Difference between SQL and NoSQL"
