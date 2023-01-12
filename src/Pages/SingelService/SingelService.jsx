@@ -23,7 +23,7 @@ return (
   <div className="w-[80%] mx-auto my-10">
     <div>
       <h2 className="text-3xl font-semibold">{name}</h2>
-      <div className="w-[50%]">
+      <div className="w-[40%] lg:float-left p-8">
         <PhotoProvider>
           <PhotoView src={img}>
             <img
